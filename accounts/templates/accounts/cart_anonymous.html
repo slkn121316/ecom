@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .cart {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .quantity input {
+            width: 50px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .quantity button {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .rate {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .buy-now-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .sticky-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+     }
+    </style>
+</head>
+<body>
+    <nav class="sticky-navbar">
+        {% block nav %}
+        {% include 'home/navbar.html' %}
+        {% endblock  %}
+    </nav>
+    <div class="cart">
+        {% for item in cart_items %}
+        {% if item.quantity > 0 %}
+        <div class="cart-item">
+            <img class="product-image" src="{{ item.product.product_images.first.image.url }}" alt="Product Image">
+            <div class="product-details">
+                <div class="product-name">{{ item.product.product_name }}</div>
+                <div class="quantity">
+                    <button class="decrement-quantity">-</button>
+                    <input type="text" class="product-quantity" value="{{ item.quantity }}">
+                    <button class="increment-quantity">+</button>
+                </div>
+                <div class="rate">Rate: Rs.<span class="product-rate">{{ item.product.price }}</span></div>
+                <button class="buy-now-button">Buy Now</button>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <script>
+        // Get all cart items
+        const cartItems = document.querySelectorAll('.cart-item');
+
+        // Attach event listeners to each cart item
+        cartItems.forEach((item) => {
+            const quantityInput = item.querySelector('.product-quantity');
+            const decrementButton = item.querySelector('.decrement-quantity');
+            const incrementButton = item.querySelector('.increment-quantity');
+            const rateElement = item.querySelector('.product-rate');
+            const buyNowButton = item.querySelector('.buy-now-button');
+            const rate = parseFloat(rateElement.textContent);
+
+            // Decrement quantity
+            decrementButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityInput.value);
+                if (quantity > 1) {
+                    quantity--;
+                    quantityInput.value = quantity;
+                    rateElement.textContent = (rate * quantity).toFixed(2);
+                } else {
+                    // If quantity reaches zero, remove the product from the list
+                    item.remove();
+                }
+            });
+
+            // Increment quantity
+            incrementButton.addEventListener('click', () => {
+                let quantity = parseInt(quantityInput.value);
+                quantity++;
+                quantityInput.value = quantity;
+                rateElement.textContent = (rate * quantity).toFixed(2);
+            });
+
+            // Buy Now button click event
+            buyNowButton.addEventListener('click', () => {
+                // Perform the desired action when the Buy Now button is clicked
+                // You can redirect to the checkout page or implement the functionality as needed
+                console.log("Buy Now clicked for product:", item.querySelector('.product-name').textContent);
+            });
+        });
+    </script>
+</body>
+</html>

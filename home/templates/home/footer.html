@@ -1,0 +1,228 @@
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .logo1 {
+            width: 40%;
+            height: 90px;
+        }
+        .footer {
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            text-align: center;
+            background-color: rgb(245,245,245);
+        }
+
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer ul li {
+            flex: 1 0 auto;
+            margin: 0 10px;
+        }
+
+        .footer ul li i {
+            margin-right: 5px;
+        }
+
+        .footer ul li a {
+            text-decoration: none;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .footer-content div {
+            flex: 1 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            text-align: center;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+        li,ui{
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer">
+        <ul>
+            <li><i class="fas fa-truck"></i> Free Shipping</li>
+            <li><i class="fas fa-rocket"></i> Fast Delivery</li>
+            <li><i class="fas fa-credit-card"></i> Online Payment</li>
+            <li><i class="fas fa-phone-alt"></i> Support/Mon-Sun(10AM-7PM)</li>
+        </ul>
+        <hr>
+        <div class="footer-content">
+            <div>
+                <h3>About Us</h3>
+                <p>Discover the artistry of Aika India, your gateway to exquisite handmade crafts. Shop unique treasures, support artisans, and celebrate cultural heritage with us.</p>
+            </div>
+            <div>
+                <h3>Contacts</h3>
+                <p>slkn121316@gmail.com</p>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                </ul>
+            </div>
+            <div class="footer-logo">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'home/images/logo.jpg' %}" alt="Logo">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Add this CSS to your stylesheet or <style> tag */
+
+/* Footer styles */
+footer {
+  background-color: #f7f7f7;
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.footer-column {
+  width: 200px;
+  margin-right: 30px;
+}
+
+.footer-column h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-legal {
+  text-align: center;
+}
+
+.footer-legal p {
+  margin-bottom: 10px;
+}
+
+.footer-legal ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-legal li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer-legal a {
+  color: #333;
+  text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-columns">
+            <div class="footer-column">
+              <h4>About</h4>
+              <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press Room</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Customer Service</h4>
+              <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Shipping</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4>Shop</h4>
+              <ul>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Online Catalog</a></li>
+                <li><a href="#">Store Locator</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-legal">
+            <p>&copy; 2023 Your Company. All rights reserved.</p>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      
+</body>
+</html>

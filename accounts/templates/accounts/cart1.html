@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'accounts/CSS/cart.css' %}">
+    <title>Cart 1</title>
+    <style>
+        .sticky-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sticky-navbar">
+        {% block nav %}
+        {% include 'home/navbar.html' %}
+        {% endblock  %}
+    </nav>
+    <!-- {% for obj in cart_items %}
+    <img src="{{ obj.product.product_images.first.image.url}}">
+    {{obj.product.product_name}}
+    {{obj.product.price}}
+    {{obj.quantity}}
+    {% endfor %} -->
+
+    <div class="cart">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for obj in cart_items %}
+            <tr>
+              <td><img style="width: 50px; height: 50px; object-fit: cover;" src="{{ obj.product.product_images.first.image.url}}" alt="Product 1"></td>
+              <td class="p_name">{{obj.product.product_name}}</td>
+              <td class="p_price">{{obj.product.price}}</td>
+              <td class="p_quantity">
+              <button  style="background: none; border: none;"><i class="fa fa-plus" style="margin-right: 5px;"></i></button>
+                {{obj.quantity}}
+              <button  style="background: none; border: none;"><i class="fa fa-minus" style="margin-left: 5px;"></i></button>
+              
+              </td>
+              <td><button class="remove-btn">Remove</button></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td  class="subtotal">Subtotal:</td>
+              <td class="subtotal">$100.00</td> <!-- Replace with your actual subtotal value -->
+            </tr>
+            <tr>
+              <td colspan="5">
+                <button class="checkout-btn">Proceed to Checkout</button>
+              </td>
+            </tr>
+          </tfoot>
+          
+        </table>
+      </div>
+      
+</div>
+</body>
+</html>

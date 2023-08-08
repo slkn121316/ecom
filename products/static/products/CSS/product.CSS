@@ -1,0 +1,29 @@
+.first{
+  margin-top: 10px;
+  height: 400px;
+  width: 50%;
+  background-color: red;
+  float: left;
+}
+h1{
+  font-size: 60px;
+}
+.lc{
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+.boximg{
+  height: 150px;
+  width: 50%;
+  display: inline-flex;
+}
+.main{
+  height: 600px;
+  width: 100%;
+  background-color: beige;
+}
+body{
+  margin: 0;
+  padding: 0;
+}

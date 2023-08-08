@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Banner Container */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        /* Banner Images */
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Banner Text */
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner-text h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .banner-text p {
+            font-size: 18px;
+        }
+
+        /* Banner Pagination */
+        .banner-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .banner-pagination button {
+            border: none;
+            background-color: transparent;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            padding: 0;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .banner-pagination button:focus {
+            outline: none;
+        }
+
+        .banner-pagination button.active {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img height="100%" width="100%" src="https://cdn.pixabay.com/photo/2016/05/27/08/51/mobile-phone-1419275_1280.jpg" alt="Image 1">
+        <img height="100%" width="100%" src="https://cdn.pixabay.com/photo/2018/03/01/14/48/woman-3190829_1280.jpg" alt="Image 2">
+        <img height="100%" width="100%" src="https://cdn.pixabay.com/photo/2016/08/03/09/04/universe-1566161_1280.jpg" alt="Image 3">
+
+        <!-- Add more images as needed -->
+
+        <div class="banner-text">
+            <h1>Welcome to Our Store</h1>
+            <p>Discover amazing products for every occasion.</p>
+        </div>
+
+        <div class="banner-pagination"></div>
+    </div>
+
+    <script>
+        // JavaScript for automatic sliding
+        const banner = document.querySelector('.banner');
+        const images = banner.querySelectorAll('img');
+        const pagination = banner.querySelector('.banner-pagination');
+        let currentImageIndex = 0;
+
+        // Create pagination buttons
+        for (let i = 0; i < images.length; i++) {
+            const button = document.createElement('button');
+            button.addEventListener('click', () => showImage(i));
+            pagination.appendChild(button);
+        }
+
+        // Show the initial image and set the active button
+        showImage(currentImageIndex);
+        pagination.children[currentImageIndex].classList.add('active');
+
+        // Function to show a specific image
+        function showImage(index) {
+            images.forEach((image, i) => {
+                if (i === index) {
+                    image.style.display = 'block';
+                    pagination.children[i].classList.add('active');
+                } else {
+                    image.style.display = 'none';
+                    pagination.children[i].classList.remove('active');
+                }
+            });
+
+            currentImageIndex = index;
+        }
+
+        // Function to automatically slide the images
+        function autoSlide() {
+            currentImageIndex++;
+            if (currentImageIndex === images.length) {
+                currentImageIndex = 0;
+            }
+            showImage(currentImageIndex);
+        }
+
+        // Start the auto sliding every 3 seconds (adjust as needed)
+        setInterval(autoSlide, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .form-group .error-message {
+      color: #ff0000;
+      font-size: 12px;
+    }
+
+    .form-group .submit-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      border: none;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .sticky-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+}
+</style>
+</head>
+<body>
+<nav class="sticky-navbar">
+  {% block nav %}
+  {% include 'home/navbar.html' %}
+  {% endblock  %}
+</nav>
+  <div class="container">
+    <h2>Login</h2>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Login" class="submit-btn">
+      </div>
+      <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    </form>
+  </div>
+</body>
+</html>
+
